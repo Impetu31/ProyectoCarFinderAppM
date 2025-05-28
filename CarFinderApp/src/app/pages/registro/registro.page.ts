@@ -1,18 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { IonicModule, ToastController } from '@ionic/angular';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-
-import { provideAuth, getAuth } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-registro',
-  standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterModule],
   templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss']
+  styleUrls: ['./registro.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
 })
 export class RegistroPage {
   username: string = '';
@@ -21,7 +19,7 @@ export class RegistroPage {
   confirmPassword: string = '';
 
   constructor(
-    private afAuth: AngularFireAuth,
+    private auth: Auth,
     private router: Router,
     private toastCtrl: ToastController
   ) {}
@@ -38,7 +36,7 @@ export class RegistroPage {
     }
 
     try {
-      await this.afAuth.createUserWithEmailAndPassword(this.email, this.password);
+      await createUserWithEmailAndPassword(this.auth, this.email, this.password);
       this.showToast('Registro exitoso');
       this.router.navigate(['/login']);
     } catch (error: any) {

@@ -1,19 +1,34 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
-import { getAuth, onAuthStateChanged } from '@angular/fire/auth';
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
+import { ToastController } from '@ionic/angular';
 
-export const authGuard: CanActivateFn = () => {
-  const router = inject(Router);
-  const auth = getAuth();
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
 
-  return new Promise<boolean>((resolve) => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        resolve(true);
-      } else {
-        router.navigate(['/login']);
-        resolve(false);
-      }
-    });
-  });
-};
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private toastController: ToastController
+  ) {}
+
+  async canActivate(): Promise<boolean> {
+    const isAuthenticated = await this.authService.isLoggedIn();
+
+    if (!isAuthenticated) {
+      const toast = await this.toastController.create({
+        message: 'Debes iniciar sesión para acceder.',
+        duration: 2000,
+        color: 'danger'
+      });
+      await toast.present();
+
+      this.router.navigate(['/home']);
+      return false;
+    }
+
+    return true;
+  }
+}

@@ -22,4 +22,9 @@ export class AuthService {
   getCurrentUser() {
     return this.auth.currentUser;
   }
+  isLoggedIn(): boolean {
+    const user = localStorage.getItem('user');
+    return user !== null;
+  }
+
 }

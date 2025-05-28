@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  gap: 15px;
+  background-color: #121212;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.title {
+  text-align: center;
+  color: white;
+}
+
+.gradient-button {
+  --background: linear-gradient(to right, #0077ff, #00bfff);
+  color: white;
+  font-weight: bold;
+}

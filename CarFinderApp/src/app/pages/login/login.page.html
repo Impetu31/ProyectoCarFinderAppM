@@ -1,0 +1,17 @@
+<ion-content class="ion-padding">
+  <div class="container">
+    <h1 class="title">Iniciar Sesión</h1>
+    <ion-item>
+      <ion-icon name="mail" slot="start" color="success"></ion-icon>
+      <ion-input type="email" placeholder="Correo" [(ngModel)]="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="lock-closed" slot="start" color="success"></ion-icon>
+      <ion-input type="password" placeholder="Contraseña" [(ngModel)]="password"></ion-input>
+    </ion-item>
+    <ion-button expand="full" class="gradient-button" (click)="login()">Ingresar</ion-button>
+    <ion-text color="light">
+      ¿No tienes cuenta? <a routerLink="/registro">Regístrate</a>
+    </ion-text>
+  </div>
+</ion-content>

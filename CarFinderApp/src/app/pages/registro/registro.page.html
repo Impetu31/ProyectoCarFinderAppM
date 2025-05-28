@@ -1,0 +1,40 @@
+<ion-content [fullscreen]="true" class="ion-padding registro-background">
+  <div class="form-container">
+    <h1>Crear Cuenta</h1>
+
+    <ion-input
+      label="Nombre de Usuario"
+      labelPlacement="floating"
+      fill="outline"
+      type="text"
+      [(ngModel)]="username">
+    </ion-input>
+
+    <ion-input
+      label="Correo Electrónico"
+      labelPlacement="floating"
+      fill="outline"
+      type="email"
+      [(ngModel)]="email">
+    </ion-input>
+
+    <ion-input
+      label="Contraseña"
+      labelPlacement="floating"
+      fill="outline"
+      type="password"
+      [(ngModel)]="password">
+    </ion-input>
+
+    <ion-input
+      label="Confirmar Contraseña"
+      labelPlacement="floating"
+      fill="outline"
+      type="password"
+      [(ngModel)]="confirmPassword">
+    </ion-input>
+
+    <ion-button expand="full" (click)="register()">Registrarse</ion-button>
+    <ion-button expand="full" fill="clear" [routerLink]="['/login']">¿Ya tienes cuenta? Inicia Sesión</ion-button>
+  </div>
+</ion-content>

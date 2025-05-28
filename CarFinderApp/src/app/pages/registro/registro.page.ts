@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { IonicModule, ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
+import { provideAuth, getAuth } from '@angular/fire/auth';
+
 @Component({
   selector: 'app-registro',
-  templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, RouterModule] // <-- IMPORTANTE
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule],
+  templateUrl: './registro.page.html',
+  styleUrls: ['./registro.page.scss']
 })
 export class RegistroPage {
   username: string = '';

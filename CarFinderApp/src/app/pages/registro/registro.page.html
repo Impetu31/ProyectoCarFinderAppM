@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true" class="ion-padding registro-background">
+<ion-content fullscreen class="ion-padding registro-background">
   <div class="form-container">
     <h1>Crear Cuenta</h1>
 
@@ -35,6 +35,8 @@
     </ion-input>
 
     <ion-button expand="full" (click)="register()">Registrarse</ion-button>
-    <ion-button expand="full" fill="clear" [routerLink]="['/login']">¿Ya tienes cuenta? Inicia Sesión</ion-button>
+    <ion-button expand="full" fill="clear" [routerLink]="['/login']">
+      ¿Ya tienes cuenta? Inicia Sesión
+    </ion-button>
   </div>
 </ion-content>
